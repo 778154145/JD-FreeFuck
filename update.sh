@@ -1,9 +1,9 @@
 #!/bin/bash
 #Author:SuperManito
 #Update Date:2021-1-24
-rm -rf /home/myid/jd/manual-update.sh
-touch /home/myid/jd/manual-update.sh
-cat > /home/myid/jd/manual-update.sh << EOF
+rm -rf /home/myid/jd2/manual-update.sh
+touch /home/myid/jd2/manual-update.sh
+cat > /home/myid/jd2/manual-update.sh << EOF
 #!/bin/bash
 bash git_pull.sh
 rm -rf run-all.sh
@@ -14,7 +14,7 @@ sed -i 's/^/bash jd.sh &/g' run-all.sh
 sed -i 's/$/& now/g' run-all.sh
 sed -i '1i\#!/bin/bash' run-all.sh
 EOF
-bash /home/myid/jd/manual-update.sh
+bash /home/myid/jd2/manual-update.sh
 echo -e "\033[32m ------------------------- 更 新  成 功 ------------------------- \033[0m"
 echo -e "\033[32m +==============================================================+ \033[0m"
 echo -e "\033[32m | 特别提示：后续使用遇到问题请访问本人Github项目页寻求帮助     | \033[0m"
