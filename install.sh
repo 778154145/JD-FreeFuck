@@ -85,11 +85,11 @@ function ProjectDeployment() {
   wget --no-check-certificate https://pd.zwc365.com/seturl/https://github.com/SuperManito/JD-FreeFuck/releases/download/jd_backup/jd.tar.gz
   mkdir -p /home/myid
   tar -zxvf jd.tar.gz -C /home/myid
-  cd /home/myid/jd
+  cd /home/myid/jd2
   bash git_pull.sh
-  cd /home/myid/jd/scripts
+  cd /home/myid/jd2/scripts
   npm install || npm install --registry=https://registry.npm.taobao.org
-  cd /home/myid/jd
+  cd /home/myid/jd2
 }
 
 ## 更改配置文件：
@@ -105,15 +105,15 @@ function CookieConfig() {
 ## 一键脚本：
 function AutoScript() {
   ## 编写一键执行脚本：
-  touch /home/myid/jd/run-all.sh
+  touch /home/myid/jd2/run-all.sh
   bash jd.sh | grep -o 'jd_[a-z].*' >run-all.sh
   bash jd.sh | grep -o 'jx_[a-z].*' >>run-all.sh
-  sed -i 's/^/bash jd.sh &/g' /home/myid/jd/run-all.sh
-  sed -i 's/$/& now/g' /home/myid/jd/run-all.sh
-  sed -i '1i\#!/bin/bash' /home/myid/jd/run-all.sh
+  sed -i 's/^/bash jd.sh &/g' /home/myid/jd2/run-all.sh
+  sed -i 's/$/& now/g' /home/myid/jd2/run-all.sh
+  sed -i '1i\#!/bin/bash' /home/myid/jd2/run-all.sh
   ## 编写一键更新脚本：
-  touch /home/myid/jd/manual-update.sh
-  cat >/home/myid/jd/manual-update.sh <<EOF
+  touch /home/myid/jd2/manual-update.sh
+  cat >/home/myid/jd2/manual-update.sh <<EOF
 #!/bin/bash
 bash git_pull.sh
 rm -rf run-all.sh
@@ -132,7 +132,7 @@ function ResultJudgment() {
   if [ $VERIFICATION -eq "1" ]; then
     echo -e "\033[32m ------------------- 环境部署成功，请执行 bash run-all.sh 命令开始你的薅羊毛行为 ------------------- \033[0m"
     echo -e "\033[32m +=================================================================================================+ \033[0m"
-    echo -e "\033[32m | 注意：该项目主运行目录为/home/myid/jd                                                           | \033[0m"
+    echo -e "\033[32m | 注意：该项目主运行目录为/home/myid/jd2                                                           | \033[0m"
     echo -e "\033[32m | 注意：为了保证脚本的正常运行，请不要更改任何组件的位置以避免出现未知的错误                      | \033[0m"
     if [ $SYSTEM = "Debian" ]; then
       echo -e "\033[32m | 注意：执行脚本期间可能会卡住或运行挂机脚本，可通过命令 Ctrl + Z 跳过继续执行剩余活动脚本        | \033[0m"
